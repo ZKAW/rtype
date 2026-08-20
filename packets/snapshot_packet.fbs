@@ -1,0 +1,48 @@
+namespace fbs;
+
+table Position {
+  entity_id: uint;
+  x: float;
+  y: float;
+}
+
+table Rect {
+  x: int;
+  y: int;
+  w: int;
+  h: int;
+}
+
+table Animation {
+  texture: string;
+  x_origin: int;
+  src_rect: Rect;
+  dest_rect: Rect;
+  frame_count: int;
+  frame_width: int;
+  frame_duration: float;
+  loop: bool;
+  left_to_right: bool;
+  current_frame: int;
+  elapsed_time: float;
+}
+
+table AnimationEntry {
+  key: string;
+  value: Animation;
+}
+
+table DrawableInfo {
+  entity_id: uint;
+  current_animation: string;
+  next_animation: string;
+  animations: [AnimationEntry];
+  z_index: int;
+}
+
+table SnapshotPacket {
+  positions: [Position];
+  drawables: [DrawableInfo];
+}
+
+root_type SnapshotPacket;

@@ -1,0 +1,5 @@
+namespace fbs;
+
+table DisconnectPacket {
+    uid: uint32;
+}

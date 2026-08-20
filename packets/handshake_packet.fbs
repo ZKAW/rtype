@@ -1,0 +1,8 @@
+namespace fbs;
+
+table HandshakePacket {
+    uid: uint32;
+    tick: uint32;
+    window_width: int;
+    window_height: int;
+}

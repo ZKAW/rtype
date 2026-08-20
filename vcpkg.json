@@ -1,0 +1,13 @@
+{
+  "name": "r-type",
+  "dependencies": [
+    "zlib",
+    "libpng",
+    "sdl2",
+    "sdl2-image",
+    "sdl2-ttf",
+    "enet",
+    "flatbuffers",
+    "lz4"
+  ]
+}

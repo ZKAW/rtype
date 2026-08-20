@@ -1,0 +1,5 @@
+namespace fbs;
+
+table ConnectPacket {
+    uid: uint32;
+}

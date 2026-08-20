@@ -1,0 +1,49 @@
+name: C++ CI
+
+on:
+  push:
+    branches:
+      - main
+      - trunk
+  pull_request:
+    branches:
+      - main
+      - trunk
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Build Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ gcc curl zip unzip tar
+
+    - name: Cache CMake Files
+      uses: actions/cache@v2
+      with:
+        path: ~/.cmake
+        key: ${{ runner.os }}-cmake-${{ hashFiles('**/CMakeLists.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-cmake-
+
+    - name: Cache Build Files
+      uses: actions/cache@v2
+      with:
+        path: build
+        key: ${{ runner.os }}-build-${{ hashFiles('**/*') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
+    - name: Create Build Directory
+      run: mkdir -p build
+
+    - name: CMake Generate
+      run: cmake -S . -B build
+
+    - name: Build
+      run: cmake --build build

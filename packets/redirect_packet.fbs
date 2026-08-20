@@ -1,0 +1,6 @@
+// redirect_packet.fbs
+namespace fbs;
+
+table RedirectPacket {
+    port: uint16;
+}

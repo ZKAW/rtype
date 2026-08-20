@@ -1,0 +1,18 @@
+include "handshake_packet.fbs";
+include "connect_packet.fbs";
+include "disconnect_packet.fbs";
+include "input_event_packet.fbs";
+include "snapshot_packet.fbs";
+include "redirect_packet.fbs";
+
+namespace fbs;
+
+enum PacketType: byte {
+    NONE = 0,
+    HANDSHAKE,
+    CONNECT,
+    DISCONNECT,
+    INPUT_EVENT,
+    SNAPSHOT,
+    REDIRECT
+}
